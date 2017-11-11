@@ -3,18 +3,20 @@ body {
     padding-top: 70px;
 }
 .stuck{
-  position: fixed;
+  /*position: fixed;*/
 }
 #lineChart{
-
+ float: left;
 }
 #map {
-
+ float: left;
 }
 #yearwise{
   position: absolute;
-  left: 50%;
-  right:50%;
+  /*margin: auto;*/
+  /*left: 50%;
+  right:50%;*/
+  float: right;
 }
 .highlighted{
     stroke: #404040;;
@@ -28,4 +30,9 @@ body {
     font-size: 16px;
     fill: #565656;
     stroke-width: 0.1px;
+}
+#xAxis path,
+#yAxis path {
+    fill: none;
+    stroke: black;
 }
