@@ -6,6 +6,11 @@
     <title>Visualization - Project - Exploring US VISA applications </title>
     <link rel="stylesheet" href="css/styles.css"/>
     <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="js/barchart.js" async></script>
+    <script src="js/map.js" async></script>
+    <script src="js/script.js" async></script>
+    <script src="js/linechart.js" async></script>
+    <script src="js/yearwise.js" async></script>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -41,11 +46,12 @@
     </nav>
 
     <div class="stuck">
-      <div  id ="lineChart">LineChart</div>
-      <div  id = "map" >Map</div>
+      <div id ="yearwise"></div>
+      <div id = "map"></div>
+      <div  id ="lineChart"></div>
     </div>
 
-    <div id="barChart">Stacked Bar Chart </div>
+    <div id="barChart"></div>
 
     <!-- Jquery-->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
