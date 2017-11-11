@@ -5,7 +5,7 @@ class Map {
      */
     constructor(state_data_json) {
       this.state_data_json = state_data_json;
-      this.svgWidth = 800;
+      this.svgWidth = 750;
       this.svgHeight = 500;
       let mapDiv = d3.select("#map")
       this.svg = mapDiv.append("svg")
@@ -20,7 +20,6 @@ class Map {
      */
     clearMap() {
 
-
     }
 
     /**
@@ -28,7 +27,25 @@ class Map {
      * @param yearData the data for one specific world cup
      */
     updateMap(yearData) {
-        console.log(yearData)
+        // console.log(yearData)
+        let max_count = 0
+        for (let i= 0; i<yearData.length; i++){
+          // console.log(yearData[i].Count, max_count)
+          if (parseInt(yearData[i].Count) >= max_count){
+            max_count = parseInt(yearData[i].Count);
+          }
+        }
+        // console.log(max_count)
+        let colorScale = d3.scaleLinear()
+                        .domain([0,max_count])
+                        .range(["#d6bfb8","#774637"]);
+
+        // console.log(yearData)
+        for(let i=0; i < yearData.length; i++){
+          // let tem  pid =
+          // console.log(tempid,yearData[i].Count)
+          d3.select("#"+yearData[i].State).style("fill", colorScale(yearData[i].Count))
+        }
     }
 
     /**
@@ -37,7 +54,7 @@ class Map {
      */
     drawMap() {
 
-      console.log(this.state_data_json)
+      // console.log(this.state_data_json)
       // D3 Projection
     let projection = d3.geoAlbersUsa()
                         .translate([390,220])
@@ -45,7 +62,7 @@ class Map {
 
       // // Define path generator
     let path = d3.geoPath()
-    .projection(projection);
+                .projection(projection);
     let mapView = this.svg.selectAll("path")
                     .data(this.state_data_json.features)
                     .enter()
