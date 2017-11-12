@@ -3,6 +3,7 @@ d3.json('data/us-states.json',function(error,data){
    let yearWise = new YearChart(map)
    let lineChart = new LineChart()
    let barChart = new BarChart()
+   let parallelChart = new ParallelChart()
 
 
    map.drawMap()
@@ -14,6 +15,10 @@ d3.json('data/us-states.json',function(error,data){
      barChart.updateBar(sectorData)
    })
    yearWise.update()
+   d3.csv('data/2011_all_data.csv', function(error, yearData){
+     console.log(yearData)
+     parallelChart.updateParallelPlot(yearData)
+   })
    // Provision for scrolly telling
     $(window).scroll(function(){
       console.log('SCROLL BODY', $(window).height());
