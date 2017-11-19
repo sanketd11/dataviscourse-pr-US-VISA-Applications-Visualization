@@ -50,3 +50,8 @@ body {
   fill: none;
   stroke: steelblue;
 }
+.brush .extent {
+  fill-opacity: .3;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}

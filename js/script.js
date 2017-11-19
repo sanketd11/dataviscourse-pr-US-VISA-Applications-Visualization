@@ -16,7 +16,13 @@ d3.json('data/us-states.json',function(error,data){
    })
    yearWise.update()
    d3.csv('data/2011_all_data.csv', function(error, yearData){
-     console.log(yearData)
+     // console.log(yearData)
+     // var nested_data = d3.nest()
+     //                  .key(function(d) { return d.employer_name; }).sortKeys(d3.descending)
+     //                  .key(function(d) { return d.pw_job_title_9089; }).sortKeys(d3.descending )
+     //                  .rollup(function(leaves) { return leaves.length; })
+     //                  .entries(yearData);
+     //  console.log(nested_data)
      parallelChart.updateParallelPlot(yearData)
    })
    // Provision for scrolly telling
