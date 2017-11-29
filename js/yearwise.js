@@ -18,6 +18,7 @@ class YearChart {
         this.svg = yearcircles.append("svg")
             .attr("width", this.svgWidth)
             .attr("height", this.svgHeight)
+            .attr("transform", "translate(0 ,0)")
     };
 
 
@@ -27,7 +28,7 @@ class YearChart {
     /**
      * Creates a chart with circles representing each election year, populates text content and other required elements for the Year Chart
      */
-    update () {
+    update (year) {
 
 
 
@@ -35,9 +36,9 @@ class YearChart {
 
        console.log(this.electionWinners)
        let THIS = this;
-       let yearData = [2011, 2012, 2013, 2014,2015];
+       let yearData = [2011, 2012, 2013, 2014,2015, 2016, 'All'];
        let xScale = d3.scaleBand()
-                      .domain([2011, 2012, 2013, 2014,2015])
+                      .domain([2011, 2012, 2013, 2014,2015, 2016, 'All'])
                       .range([this.margin.left, this.svgWidth])
 
        let dashlineSelect = this.svg.selectAll('line').data([1])
@@ -46,7 +47,7 @@ class YearChart {
                                     .append('line')
                                     .attr('x1', xScale(2011))
                                     .attr('y1', (THIS.svgHeight/2)- THIS.margin.bottom)
-                                    .attr('x2', xScale(2015))
+                                    .attr('x2', xScale('All'))
                                     .attr('y2', (THIS.svgHeight/2) - THIS.margin.bottom)
                                     .attr('stroke-dasharray',"10,1")
                                     .attr('stroke-width',2)
@@ -67,7 +68,9 @@ class YearChart {
                                      })
                                      .attr('cy', (THIS.svgHeight/2) - THIS.margin.bottom )
                                      .attr('r',15 )
-                                     .classed('yearChart', true)
+                                     .attr('id',function(d){
+                                       return 'x'+d.toString();
+                                     })
                                      .on('click', function(d){
                                        d3.selectAll('.highlighted')
                                         .classed('highlighted', false)
@@ -97,6 +100,12 @@ class YearChart {
 
      yrTextselect.merge(yrText);
      yrTextselect.exit().remove();
+
+     d3.selectAll('.highlighted')
+      .classed('highlighted', false);
+    let id = "#x"+year;
+     d3.select(id)
+        .classed('highlighted',true);
 
     };
 
