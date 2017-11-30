@@ -8,6 +8,9 @@ d3.json('data/us-states.json',function(error,data){
    let allyeareconomicSectorCaseCounts=[]
    let allyearCaseCounts=[]
    let data_econ = []
+   let allyearParallelPlot = []
+   let flag = true
+
 
 
    map.drawMap()
@@ -21,10 +24,10 @@ d3.json('data/us-states.json',function(error,data){
       barChart.updateAllBar(data_econ)
    }
 
-   callParallelPlot = function(year){
-     d3.csv('data/'+year+'_all_data.csv', function(error, yearData){
-        parallelChart.updateParallelPlot(yearData)
-    });
+   callParallelPlot = function(yearData){
+
+      parallelChart.updateParallelPlot(yearData)
+
   }
   let yearValues = ["2011","2012", "2013","2014","2015","2016"]
   dataInput = function(year){
@@ -44,14 +47,27 @@ d3.json('data/us-states.json',function(error,data){
                               .key(function(d){ return d.Case_Status;})
                               .rollup(function(v){ return v.length})
                               .entries(yearData);
-
+      let parallelPlotData = getRandom(yearData, 1500)
 
       allyearEconomicSectorData.push({key:year, value:economicSectorCounts});
       allyeareconomicSectorCaseCounts.push({key:year, value:economicSectorCaseCounts});
       allyearCaseCounts.push({key:year, value:yearCaseCounts})
+      allyearParallelPlot.push({key:year, value:parallelPlotData})
      })
   }
-
+  function getRandom(arr, n) {
+      var result = new Array(n),
+          len = arr.length,
+          taken = new Array(len);
+      if (n > len)
+          throw new RangeError("getRandom: more elements taken than available");
+      while (n--) {
+          var x = Math.floor(Math.random() * len);
+          result[n] = arr[x in taken ? taken[x] : x];
+          taken[x] = --len;
+      }
+      return result;
+  }
   yearValues.forEach(dataInput);
 
 
@@ -70,7 +86,7 @@ d3.json('data/us-states.json',function(error,data){
 
       }else{
         d3.select('#container').classed('navbar-fixed-top',false)
-        d3.select('#container1').classed('navbar-fixed-top', true)
+        // d3.select('#container1').classed('navbar-fixed-top', true)
         d3.select('#container1').classed('hide',false)
         d3.select('#container1').classed('show',true)
 
@@ -93,27 +109,33 @@ d3.json('data/us-states.json',function(error,data){
       else if(($(window).scrollTop() >=750 && $(window).scrollTop()<900)){
         callLine(5);
       }else{
-
-        console.log('data --->',allyearEconomicSectorData)
-        if (data_econ.length == 0){
-          for (let key1=0 ; key1<allyearEconomicSectorData.length; key1++) {
-            console.log("Key--->",key1)
-            let counter =0
-            for (let key2=0; key2 < allyearEconomicSectorData[key1].value.length; key2++){
-              let temp = allyearEconomicSectorData[key1].value[key2]
-              if (!data_econ.hasOwnProperty(counter)) {
-                  data_econ[counter] = { key:temp.key, value:[{key:allyearEconomicSectorData[key1].key, value: temp.value}]}
-              }else{
-                  data_econ[counter].value.push({key:allyearEconomicSectorData[key1].key, value : temp.value})
+        if (flag == true){
+          console.log('data --->',allyearEconomicSectorData)
+          if (data_econ.length == 0){
+            for (let key1=0 ; key1<allyearEconomicSectorData.length; key1++) {
+              console.log("Key--->",key1)
+              let counter =0
+              for (let key2=0; key2 < allyearEconomicSectorData[key1].value.length; key2++){
+                let temp = allyearEconomicSectorData[key1].value[key2]
+                if (!data_econ.hasOwnProperty(counter)) {
+                    data_econ[counter] = { key:temp.key, value:[{key:allyearEconomicSectorData[key1].key, value: temp.value}]}
+                }else{
+                    data_econ[counter].value.push({key:allyearEconomicSectorData[key1].key, value : temp.value})
+                }
+                counter+=1
               }
-              counter+=1
             }
           }
+          console.log("data_econ:--->",data_econ)
+          callAllBarChart(data_econ);
+          console.log(allyearParallelPlot[0].key)
+          callParallelPlot(allyearParallelPlot[0].value)
+          flag = false
         }
-        console.log("data_econ:--->",data_econ)
-        callAllBarChart(data_econ);
-        callParallelPlot("2011")
+
       }
     });
+    // console.log(allyearParallelPlot[0].key)
+    // callParallelPlot(allyearParallelPlot[0].value)
 
 });
