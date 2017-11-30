@@ -16,11 +16,11 @@ constructor(){
 
 updateParallelPlot(yearData){
   // console.log("here"+yearData.case_status)
+
   let THIS = this
-  yearData = getRandom(yearData, 1000)
   let yAxis =d3.axisRight();
   let yScales ={}
-  let column_names = ['case_status', 'class_of_admission', 'us_economic_sector', 'job_info_work_state', 'country_of_citzenship' ]
+  let column_names = ['Case_Status', 'Class_Of_Admission', 'US_Economic_Sector', 'Employer_State', 'Country_Of_Citzenship' ]
     // Extract the list of column_names and create a scale for each.
   let xScale = d3.scaleBand()
                 .domain(column_names)
@@ -98,10 +98,11 @@ updateParallelPlot(yearData){
   g.append("g")
       .attr("class", "axis")
       .each(function(d) { d3.select(this).call(yAxis.scale(yScales[d])); })
-    .append("text")
-      .style("text-anchor", "middle")
-      .attr("y", -9)
-      .text(function(d) { return d; });
+        .append("text")
+          .style("text-anchor", "middle")
+          .attr("y", 9)
+          .text(function(d,i) { console.log(d); return d; })
+          .style("stroke","black");
 
 
 
