@@ -69,7 +69,18 @@ class YearChart {
                                      .attr('id',function(d){
                                        return 'x'+d.toString();
                                      })
-                                     .style("fill", 'green');
+                                     .on('click', function(d){
+                                       d3.selectAll('.highlighted')
+                                        .classed('highlighted', false)
+                                       d3.select(this)
+                                          .classed('highlighted',true)
+                                    })
+                                    .style("fill", 'green')
+									.on("mouseover",function(d,i){ 	
+		d3.select(this).classed("selected",true)		
+		})
+			.on("mouseout",function(d,i){ 
+			d3.select(this).classed("selected",false)})
 
 
 

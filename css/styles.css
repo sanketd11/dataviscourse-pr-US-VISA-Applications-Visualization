@@ -59,8 +59,16 @@ body {
   right: 25%;
 }
 .highlighted {
-    stroke: #404040;;
+    stroke: #404040;
     stroke-width:4;
+	 r:18px;
+	 
+}
+
+.selected{
+    stroke: #404040;
+    stroke-width:4;
+   
 }
 .yearChart{
     stroke: #FFF;
@@ -79,7 +87,7 @@ body {
 
 .d3-tip {
     /*line-height: 5;*/
-   
+   position : fixed;
     min-width: 610px;
     border-style: groove;
     /*padding: 12px;*/
