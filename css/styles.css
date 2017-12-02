@@ -98,6 +98,18 @@ padding: 10px;
     stroke: black;
 }
 
+.d3-tip {
+    /*line-height: 5;*/
+   
+    min-width: 610px;
+    border-style: groove;
+    /*padding: 12px;*/
+    background: #FFFFFF;
+    color: rgba(0, 0, 0, 0.8);
+
+    pointer-events: none;
+}
+	
 .background path {
   fill: none;
   stroke: #ddd;
