@@ -32,8 +32,6 @@ class YearChart {
 
 
 
-       // ******* TODO: PART I *******
-
        console.log(this.electionWinners)
        let THIS = this;
        let yearData = [2011, 2012, 2013, 2014,2015, 2016, 'All'];
@@ -71,13 +69,7 @@ class YearChart {
                                      .attr('id',function(d){
                                        return 'x'+d.toString();
                                      })
-                                     .on('click', function(d){
-                                       d3.selectAll('.highlighted')
-                                        .classed('highlighted', false)
-                                       d3.select(this)
-                                          .classed('highlighted',true)
-                                    })
-                                    .style("fill", 'green');
+                                     .style("fill", 'green');
 
 
 
