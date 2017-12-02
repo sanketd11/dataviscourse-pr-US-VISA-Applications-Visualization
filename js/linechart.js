@@ -8,7 +8,7 @@ class LineChart{
     this.svg = lineDiv.append("svg")
                         .attr("width",this.svgWidth)
                         .attr("height",this.svgHeight)
-                        .attr("transform", "translate(0 ,50)")
+                        .attr("transform", "translate(0 ,0)")
 
     this.linesvg = this.svg.append('g')
                       .attr('id', "line1");
