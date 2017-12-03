@@ -3,7 +3,8 @@ class Map {
     /**
      * Creates a Map Object
      */
-    constructor(state_data_json) {
+    constructor(state_data_json) 
+	{
       this.state_data_json = state_data_json;
       this.svgWidth = 750;
       this.svgHeight = 550;
@@ -17,55 +18,24 @@ class Map {
 
 	  this.mapView  = null;	
 	  
-			this.tipSVG = d3.select("#tipDiv")
+	this.tipSVG = d3.select("#tipDiv")
 					.append("svg")
 					.attr("width", 750)
 					.attr("height", 70);
 					
-					  this.tipSVG.append("rect").attr("id","r1").attr("fill", "steelblue")
-					  .attr("x", 125)
-					  .attr("y", 27)
-					  this.tipSVG.append("rect").attr("id","r2").attr("fill", "steelblue")
-					  .attr("x", 95)
-					  .attr("y", 47)
-					 /*  this.tipSVG.append("rect").attr("id","r3").attr("fill", "steelblue")
-					  .attr("x", 155)
-					  .attr("y", 67)
-					  
-					    this.tipSVG.append("rect").attr("id","r4").attr("fill", "steelblue")
-					  .attr("x", 125)
-					  .attr("y", 87)
-					  this.tipSVG.append("rect").attr("id","r5").attr("fill", "steelblue")
-					  .attr("x", 95)
-					  .attr("y", 107)
-					  this.tipSVG.append("rect").attr("id","r6").attr("fill", "steelblue")
-					  .attr("x", 155)
-					  .attr("y", 127) */
-		
-							this.tipSVG.append("text").attr("id","t1").attr("x", 10).attr("y", 20)
-							
-							this.tipSVG.append("text").attr("id","t2").attr("x", 10).attr("y", 40)
-							this.tipSVG.append("text").attr("id","t3").attr("x", 130).attr("y", 40)
-							this.tipSVG.append("text").attr("id","t4").attr("x", 10).attr("y", 60)
-							this.tipSVG.append("text").attr("id","t5").attr("x", 130).attr("y", 60)
-						/* 	this.tipSVG.append("text").attr("id","t6").attr("x", 10).attr("y", 80)
-							this.tipSVG.append("text").attr("id","t7").attr("x", 130).attr("y", 80)
-							
-							this.tipSVG.append("text").attr("id","t8").attr("x", 10).attr("y", 100)
-							this.tipSVG.append("text").attr("id","t9").attr("x", 130).attr("y", 100)
-							this.tipSVG.append("text").attr("id","t10").attr("x", 10).attr("y", 120)
-							this.tipSVG.append("text").attr("id","t11").attr("x", 130).attr("y", 120)
-							this.tipSVG.append("text").attr("id","t12").attr("x", 10).attr("y", 140)
-							this.tipSVG.append("text").attr("id","t13").attr("x", 130).attr("y", 140)
-							
-							
-				 */
-				 
-				
+	this.tipSVG.append("rect").attr("id","r1").attr("fill", "steelblue")
+					.attr("x", 125)
+					.attr("y", 27)
+	this.tipSVG.append("rect").attr("id","r2").attr("fill", "steelblue")
+					.attr("x", 95)
+					.attr("y", 47)
+						
+	this.tipSVG.append("text").attr("id","t1").attr("x", 10).attr("y", 20)
+	this.tipSVG.append("text").attr("id","t2").attr("x", 10).attr("y", 40)
+	this.tipSVG.append("text").attr("id","t3").attr("x", 130).attr("y", 40)
+	this.tipSVG.append("text").attr("id","t4").attr("x", 10).attr("y", 60)
+	this.tipSVG.append("text").attr("id","t5").attr("x", 130).attr("y", 60)		 			
     }
-
-  
-
   
   
     updateMap(stateAppCountsvalue, stateMeanSalaryvalue) 
@@ -80,11 +50,6 @@ class Map {
 		let salaryScale = d3.scaleLinear()
 					.domain([d3.min(stateMeanSalaryvalue, d => parseInt(d.value)),d3.max(stateMeanSalaryvalue, d => parseInt(d.value))])
 					.range([0,this.svgWidth - this.margin2]); 
-					
-		/* let max_count = d3.max(stateWiseCaseCountsvalue, function(d){ return d3.max(d.values, function(v){ return v.value;})})			
-		let visaStatusScale = d3.scaleLinear()
-					.domain([0, max_count])
-					.range([0,this.svgWidth]);  */
 								
 
         let colorScale = d3.scaleLinear()
@@ -97,15 +62,12 @@ class Map {
         }
 		
 	   this.mapView.on('mouseover', function(d,i) {
-					
-		
-					
-					
-				d3.select("#r1").attr("width", 0)
-					  .attr("height", 18)
-					  .transition()
-					  .duration(1000)
-					  .attr("width",function(){
+
+	    d3.select("#r1").attr("width", 0)
+ 					   .attr("height", 18)
+					   .transition()
+					   .duration(1000)
+					   .attr("width",function(){
 							  for(let i=0;i<stateAppCountsvalue.length;i++)
 								{  
 									if(d.id===stateAppCountsvalue[i].key)
@@ -115,11 +77,11 @@ class Map {
 								}
 						  })
 					  
-					  d3.select("#r2").attr("width", 0)
-					  .attr("height", 18)
-					  .transition()
-					  .duration(1000)
-					  .attr("width",function(){
+		d3.select("#r2").attr("width", 0)
+		    			.attr("height", 18)
+					    .transition()
+					    .duration(1000)
+					    .attr("width",function(){
 							  for(let i=0;i<stateMeanSalaryvalue.length;i++)
 								{  
 									if(d.id===stateMeanSalaryvalue[i].key)
@@ -131,13 +93,12 @@ class Map {
 					  
 	
 	  
-		 d3.select("#t1").text("State: "+ d.properties.name+" ("+d.id+")")
-					//  .attr("x", 10)
-					 // .attr("y", 20)
+		d3.select("#t1").text("State: "+ d.properties.name+" ("+d.id+")")
+
 					 
-					 	 d3.select("#t2").text("Total Applications: ")
+		d3.select("#t2").text("Total Applications: ")
 						 
-						  d3.select("#t3").text(function(){
+		d3.select("#t3").text(function(){
 							  for(let i=0;i<stateAppCountsvalue.length;i++)
 								{  
 									if(d.id===stateAppCountsvalue[i].key)
@@ -146,10 +107,9 @@ class Map {
 									}
 								}
 						  })
-						  .transition()
-				  .duration(1000)
-				//  .attr("x", 130 + applicationScale(stateAppCountsvalue[i].value))
-				   .attr("x",function(){
+						.transition()
+				        .duration(1000)
+				        .attr("x",function(){
 							  for(let i=0;i<stateAppCountsvalue.length;i++)
 								{  
 									if(d.id===stateAppCountsvalue[i].key)
@@ -160,9 +120,9 @@ class Map {
 						  })
 						  
 				  
-						   d3.select("#t4").text("Mean Salary: ")
+		d3.select("#t4").text("Mean Salary: ")
 						   
-						    d3.select("#t5").text(function(){
+		d3.select("#t5").text(function(){
 								for(let i=0;i<stateMeanSalaryvalue.length;i++)
 									{  
 									if(d.id===stateMeanSalaryvalue[i].key)
@@ -172,10 +132,9 @@ class Map {
 								}
 								
 			  })
-			  .transition()
-				  .duration(1000)
-				//  .attr("x", 100 + salaryScale(stateMeanSalaryvalue[i].value))
-				   .attr("x",function(){
+						.transition()
+						.duration(1000)
+						.attr("x",function(){
 							  for(let i=0;i<stateMeanSalaryvalue.length;i++)
 								{  
 									if(d.id===stateMeanSalaryvalue[i].key)
@@ -188,47 +147,44 @@ class Map {
 				  
 				  
 				  
-			 this.mapView.on('mouseout', function(d,i) {
-				 
-				 d3.select("#t1").text("")
-				 
-				  d3.select("#t3").text("")
-						  .transition()
-				  .duration(1000)
-				  .attr("x", 130 + applicationScale(stateAppCountsvalue[i].value))
+		this.mapView.on('mouseout', function(d,i) {				 
+				d3.select("#t1").text("")				 
+				d3.select("#t3").text("")
+								  .transition()
+								  .duration(1000)
+								  .attr("x", 130 + applicationScale(stateAppCountsvalue[i].value))
 				  
-		 d3.select("#t5").text("").transition()
-				  .duration(1000)
-				  .attr("x", 100 + salaryScale(stateMeanSalaryvalue[i].value))
+				d3.select("#t5").text("").transition()
+								.duration(1000)
+								.attr("x", 100 + salaryScale(stateMeanSalaryvalue[i].value))
 				  
-				  d3.select("#r1").attr("width", 0)
-					  .attr("height", 0)
+				d3.select("#r1").attr("width", 0)
+								.attr("height", 0)
 					  
-					  
-					  d3.select("#r2").attr("width", 0)
-					  .attr("height", 0)
-					  
-					  
-					   d3.select("#t2").text("")
+				d3.select("#r2").attr("width", 0)
+								.attr("height", 0)
+	  
+			    d3.select("#t2").text("")
 					   
-					   d3.select("#t4").text("")
+				d3.select("#t4").text("")
 					   
 		})
     }
+
 	
-
-
-    drawMap(yearData) {
+    drawMap(yearData)
+	{
 	
-    let projection = d3.geoAlbersUsa()
-                        .translate([390,220])
-                        .scale([900]);
+		let projection = d3.geoAlbersUsa()
+						   .translate([390,220])
+                           .scale([900]);
 
-      // // Define path generator
-    let path = d3.geoPath()
-                .projection(projection);
-    this.mapView = this.svg.selectAll("path")
-                    .data(this.state_data_json.features)
+		// Define path generator
+		let path = d3.geoPath()
+                     .projection(projection);
+					 
+		this.mapView = this.svg.selectAll("path")
+					.data(this.state_data_json.features)
                     .enter()
                     .append("path")
                     .attr("d",path)
