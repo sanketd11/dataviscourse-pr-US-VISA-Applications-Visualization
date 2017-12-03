@@ -18,6 +18,8 @@ Theres one pdf namely as Process Book which conveys whatever we are doing in the
 
 There's one Feedback exercise Pdf which explains what we learnt from the feedback which we got from the other team and most importantly TA as well.
 
+---***NOTE :- WE HAVE IMPLEMENTED SCROLLYTELLING BY MANIPULATING LOCATION OF SCROLL BAR IN THE BROWSER WINDOW. PLEASE ADJUST THE BROWSER WINDOW ACCORDINGLY. PLEASE SCROLL A LITTLE INITIAL TO START.
+
 
 The link for Project Website :https://sanketd11.github.io/dataviscourse-pr-US-VISA-Applications-Visualization
 
