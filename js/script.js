@@ -19,12 +19,14 @@ d3.json('data/us-states.json',function(error,data){
    let flag = true
    let yearValues = ["2011","2012", "2013","2014","2015","2016"]
    let yearValuesAll = ["2011","2012", "2013","2014","2015","2016","All"]
+
    let bigDict ={}
    let bigDict1 ={}
 
 
 
-        		map.drawMap()
+
+   map.drawMap()
    callMap = function(i){
 
 
@@ -52,8 +54,8 @@ d3.json('data/us-states.json',function(error,data){
    callAllBarChart2= function(data_visaType){
       barChart2.updateAllBar(data_visaType)
    }
-   callParallelPlot = function(yearData){
-      parallelChart.updateParallelPlot(yearData)
+   callParallelPlot = function(i){
+      parallelChart.updateParallelPlot(allyearParallelPlot[i].value)
   }
 
   dataInput = function(year){
@@ -147,7 +149,9 @@ d3.json('data/us-states.json',function(error,data){
 								if(i === 6)
 								{
 								callAllBarChart(data_econ);
+
                 callAllBarChart2(data_visaType);
+
 								}
 								else
 								{
@@ -310,7 +314,7 @@ d3.json('data/us-states.json',function(error,data){
           callAllBarChart(data_econ);
           callAllBarChart2(data_visaType)
           console.log("Data Vis Type: --->", data_visaType)
-          callParallelPlot(allyearParallelPlot[0].value)
+          callParallelPlot(0)
           flag = false
         }
       }
