@@ -55,6 +55,7 @@ d3.json('data/us-states.json',function(error,data){
       parallelChart.updateParallelPlot(allyearParallelPlot[i].value)
   }
 
+
   dataInput = function(year){
      d3.csv('data/'+year+'_all_data.csv', function(error, yearData){
 
@@ -152,8 +153,9 @@ d3.json('data/us-states.json',function(error,data){
                 callAllBarChart2(data_visaType);
 
 								}
-								else
+								else		 
 								{
+
 								callMap(i)
 								callLine(i)
 								callBarChart(i)
@@ -206,32 +208,42 @@ d3.json('data/us-states.json',function(error,data){
       if ($(window).scrollTop() >=-10 && $(window).scrollTop()<150){
 		callYearWise("2011");
         callLine(0);
-        callMap(0)
+		callMap(0);
 
       }else if(($(window).scrollTop() >=150 && $(window).scrollTop()<300)){
 		callYearWise("2012");
         callLine(1);
-        callMap(1)
+
+		callMap(1);
+
       }
       else if(($(window).scrollTop() >=300 && $(window).scrollTop()<450)){
 		callYearWise("2013");
         callLine(2);
-        callMap(2)
+
+		callMap(2);
+
       }
       else if(($(window).scrollTop() >=450 && $(window).scrollTop()<600)){
 		callYearWise("2014");
         callLine(3);
-        callMap(3)
+
+		callMap(3);
+
       }
       else if(($(window).scrollTop() >=600 && $(window).scrollTop()<750)){
 		callYearWise("2015");
         callLine(4);
-        callMap(4)
+
+		callMap(4);
+
       }
       else if(($(window).scrollTop() >=750 && $(window).scrollTop()<900)){
 		callYearWise("2016");
         callLine(5);
-        callMap(5)
+
+		callMap(5);
+
       }else{
 		callYearWise("All");
 

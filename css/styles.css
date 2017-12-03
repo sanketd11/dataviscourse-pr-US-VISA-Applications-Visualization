@@ -162,13 +162,22 @@ body {
   stroke: #fff;
   shape-rendering: crispEdges;
 }
-
-path{
-fill : none;
-stroke-width: 1px;
-stroke:#222;
-
+.content {
+    display: inline-block;
+    width: 48%;
 }
+
+.contentforparallelplot {
+    display: inline-block;
+    width: 100%;
+}
+
+path {
+            fill: none;
+            stroke-width: 1px;
+            stroke: #222;
+        }
+
 
 #footer {
     position: fixed;
@@ -184,3 +193,4 @@ stroke:#222;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
 }
+

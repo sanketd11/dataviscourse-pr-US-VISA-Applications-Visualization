@@ -2,15 +2,32 @@ class ParallelChart {
 
 constructor(){
 
-    this.svgWidth = 1500;
-    this.svgHeight = 600;
-    let parallelDiv = d3.select("#parallelChart")
 
-    this.margin = {top: 30, right: 20, bottom: 30, left: 100};
-    this.svg =parallelDiv.append("svg")
-                        .attr("width",this.svgWidth)
-                        .attr("height",this.svgHeight)
-                        .attr("transform", "translate(0 ,50)")
+	 this.margin = {top: 30, right: 20, bottom: 30, left: 100};
+	    let parallelDiv = d3.select("#parallelChart").classed("contentforparallelplot", true);
+
+	    //fetch the svg bounds
+	    this.svgBounds = parallelDiv.node().getBoundingClientRect();
+	    this.svgWidth = this.svgBounds.width - this.margin.right;
+		this.svgHeight = 600;
+		 
+		 //add the svg to the div
+	    this.svg = parallelDiv.append("svg")
+	        .attr("width",this.svgWidth)
+	        .attr("height",this.svgHeight)
+			.attr("transform", "translate(0 ,50)")
+			
+			
+			
+  //  this.svgWidth = 1500;
+  //  this.svgHeight = 600;
+  //  let parallelDiv = d3.select("#parallelChart")
+
+    //this.margin = {top: 30, right: 20, bottom: 30, left: 100};
+    //this.svg =parallelDiv.append("svg")
+      //                  .attr("width",this.svgWidth)
+        //                .attr("height",this.svgHeight)
+          //              .attr("transform", "translate(0 ,50)")
 
 }
 

@@ -1,14 +1,30 @@
 class LineChart{
   constructor() {
-    this.svgWidth = 650;
-    this.svgHeight = 535;
-    let lineDiv = d3.select("#lineChart")
+	  
+	      this.margin = {top: 10, right: 20, bottom: 30, left: 60 };
+	    let lineDiv = d3.select("#lineChart").classed("content", true);
 
-    this.margin = {top: 10, right: 20, bottom: 30, left: 50 };
-    this.svg = lineDiv.append("svg")
-                        .attr("width",this.svgWidth)
-                        .attr("height",this.svgHeight)
-                        .attr("transform", "translate(0,0)")
+	    //fetch the svg bounds
+	    this.svgBounds = lineDiv.node().getBoundingClientRect();
+	    this.svgWidth = this.svgBounds.width - this.margin.left - this.margin.right;
+		this.svgHeight = 535
+		 
+		 //add the svg to the div
+	    this.svg = lineDiv.append("svg")
+	        .attr("width",this.svgWidth)
+	        .attr("height",this.svgHeight)
+			.attr("transform", "translate(0,0)")
+
+			
+    //this.svgWidth = 650;
+   // this.svgHeight = 535;
+    //let lineDiv = d3.select("#lineChart")
+
+   //this.margin = {top: 10, right: 20, bottom: 30, left: 50 };
+   // this.svg = lineDiv.append("svg")
+      //                  .attr("width",this.svgWidth)
+        //                .attr("height",this.svgHeight)
+          //              .attr("transform", "translate(0,0)")
 
     this.svg.append("text")
         .attr("x", (this.svgWidth / 2))

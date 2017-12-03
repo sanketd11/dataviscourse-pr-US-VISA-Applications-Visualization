@@ -5,16 +5,34 @@ class Map {
      */
     constructor(state_data_json)
 	{
+		
+		 this.margin = {top: 30, right: 20, bottom: 30, left: 50};
+	    let divmap = d3.select("#map").classed("content", true);
+
+	    //fetch the svg bounds
+	    this.svgBounds = divmap.node().getBoundingClientRect();
+	    this.svgWidth = this.svgBounds.width -this.margin.right;
+		this.svgHeight = 480;
+		 
+		 //add the svg to the div
+	    this.svg = divmap.append("svg")
+	        .attr("width",this.svgWidth)
+	        .attr("height",this.svgHeight)
+			.attr("transform", "translate(0 ,50)")
+			
+			
       this.state_data_json = state_data_json;
-      this.svgWidth = 750;
-      this.svgHeight = 480;
+     // this.svgWidth = 750;
+ 
 	  this.margin1 = 170
 	  this.margin2 = 200
-      let mapDiv = d3.select("#map")
-      this.svg = mapDiv.append("svg")
-                          .attr("width",this.svgWidth)
-                          .attr("height",this.svgHeight)
-                          .attr("transform", "translate(0 ,50)")
+  //    let mapDiv = d3.select("#map")
+    //  this.svg = mapDiv.append("svg")
+      //                    .attr("width",this.svgWidth)
+        //                  .attr("height",this.svgHeight)
+          //                .attr("transform", "translate(0 ,50)")
+						  
+						  
     this.svg.append("text")
         .attr("x", (this.svgWidth / 2))
         .attr("y",(15))
@@ -27,7 +45,7 @@ class Map {
 
 	this.tipSVG = d3.select("#tipDiv")
 					.append("svg")
-					.attr("width", 700)
+					.attr("width", this.svgWidth)
 					.attr("height", 70);
 
 	this.tipSVG.append("rect").attr("id","r1").attr("fill", "steelblue")
@@ -183,8 +201,8 @@ class Map {
 	{
 
 		let projection = d3.geoAlbersUsa()
-						   .translate([390,220])
-                           .scale([900]);
+						   .translate([this.svgWidth - 350,220])
+                           .scale([this.svgWidth + this.margin.left]);
 
 		// Define path generator
 		let path = d3.geoPath()

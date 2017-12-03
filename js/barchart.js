@@ -1,15 +1,35 @@
 class BarChart{
 
     constructor() {
-      this.svgWidth = 750;
-      this.svgHeight = 540;
-      let barDiv = d3.select("#barChart")
+		
+		
+		this.margin = {top: 45, right: 20, bottom: 30, left: 100};
+	    let barDiv = d3.select("#barChart").classed("content", true);
 
-      this.margin = {top: 45, right: 20, bottom: 30, left: 100};
-      this.svg =barDiv.append("svg")
-                          .attr("width",this.svgWidth)
-                          .attr("height",this.svgHeight)
-                          .attr("transform", "translate(0 ,0)")
+	    //fetch the svg bounds
+	    this.svgBounds = barDiv.node().getBoundingClientRect();
+	    this.svgWidth = this.svgBounds.width - this.margin.right;
+		this.svgHeight = 540;
+		 
+		 //add the svg to the div
+	    this.svg = barDiv.append("svg")
+	        .attr("width",this.svgWidth)
+	        .attr("height",this.svgHeight)
+			.attr("transform", "translate(0 ,0)")
+			
+			
+			
+      //this.svgWidth = 750;
+     // this.svgHeight = 540;
+      //let barDiv = d3.select("#barChart")
+
+      //this.margin = {top: 45, right: 20, bottom: 30, left: 100};
+     // this.svg =barDiv.append("svg")
+       //                   .attr("width",this.svgWidth)
+         //                 .attr("height",this.svgHeight)
+           //               .attr("transform", "translate(0 ,0)")
+		   
+		   
       this.svg.append("text")
           .attr("x", (this.svgWidth / 2))
           .attr("y", (15))
