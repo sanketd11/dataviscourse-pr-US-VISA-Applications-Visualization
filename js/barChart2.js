@@ -2,14 +2,21 @@ class BarChart2{
 
     constructor() {
       this.svgWidth = 600;
-      this.svgHeight = 550;
+      this.svgHeight = 540;
       let barDiv = d3.select("#barChart2")
 
-      this.margin = {top: 30, right: 20, bottom: 30, left: 50};
+      this.margin = {top:30, right: 20, bottom: 30, left: 50};
       this.svg =barDiv.append("svg")
                           .attr("width",this.svgWidth)
                           .attr("height",this.svgHeight)
                           .attr("transform", "translate(0 ,0)")
+      this.svg.append("text")
+          .attr("x", (this.svgWidth / 2))
+          .attr("y",(15))
+          .attr("text-anchor", "middle")
+          .style("font-size", "16px")
+          .style("text-decoration", "underline")
+          .text("Application Counts (Visa Type)");
       this.xAxis = this.svg.append('g')
               .attr('id', 'xAxisBar2');
 
@@ -25,7 +32,7 @@ class BarChart2{
       // draw legend
       let typeArr = ["Certified", 'Denied', "Withdrawn", "Certified_Expired"]
 
-      let color = [ "#840ac1","#56ef89", "#c10b0b","#1500ff"]
+      let color = [ "#56ef89","#c10b0b", "#840ac1","#000000"]
       let legend = this.svg.selectAll(".legend")
       .data(typeArr);
       legend
@@ -107,10 +114,10 @@ class BarChart2{
 
       let barNames = ["Denied","Withdrawn", "Certified","Certified_Expired"]
       let chooseColor={
-        "Denied" : "#56ef89",
-        "Withdrawn": "#c10b0b",
-         "Certified":"#840ac1",
-        "Certified_Expired": "#1500ff"
+        "Denied" : "#c10b0b",
+        "Withdrawn": "#840ac1",
+         "Certified":"#56ef89",
+        "Certified_Expired": "#000000"
       }
 
 
@@ -291,18 +298,16 @@ class BarChart2{
             })
             .attr('x', function(d){
               return xScale(j)+22;
-            })  .attr('height',0).transition().duration(1500)
+            })
+            .attr('height',0).transition().duration(1500)
             .attr('height', function(d,i){
               return (THIS.svgHeight - THIS.margin.bottom - yScale(data_[i].value))
             })
             .attr('width', 30)
             .style('fill', function(d,i){
               return chooseColor[i];
-            })
-            .append('title')
-            .text(function(d,i){
-              return (data_[i].key+ "\nApplication Count: "+ data_[i].value)
             });
+
         bar.exit().remove();
                 let bartitle = d3.select(this).selectAll('rect').data(data_);
                 bartitle.each(function(d){

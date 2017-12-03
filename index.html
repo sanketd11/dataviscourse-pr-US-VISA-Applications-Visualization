@@ -17,8 +17,24 @@
     <script src="js/linechart.js" async></script>
     <script src="js/yearwise.js" async></script>
     <script src="js/parallelplot.js" async></script>
+    <script>
+    function myFunction() {
+      window.scrollTo(0,document.body.scrollHeight);
+      return true;
+    }
+
+      function on() {
+          document.getElementById("overlay").style.display = "block";
+      }
+
+      function off() {
+          document.getElementById("overlay").style.display = "none";
+      }
+
+    </script>
 </head>
 <body>
+  <div id="top"></div>
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -32,7 +48,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="https://github.com/sanketd11/dataviscourse-pr-US-VISA-Applications-Visualization/blob/master/PROJECT%20PROCESS%20BOOK.pdf">Progress Book</a></li>
+            <li><a href="#" onclick="on()">About</a></li>
+
+            <li><a href="https://github.com/sanketd11/dataviscourse-pr-US-VISA-Applications-Visualization/blob/master/PROJECT%20PROCESS%20BOOK.pdf">Process Book</a></li>
             <li><a href="https://github.com/sanketd11/dataviscourse-pr-US-VISA-Applications-Visualization">Source</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Team <span class="caret"></span></a>
@@ -44,28 +62,36 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#container1">Bottom</a></li>
+            <li><a href= "#footer"onclick="return myFunction();" >Bottom</a></li>
             <li class="active"><a href="#map">Top</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
     <div id ="container0" class="navbar-fixed-top">
         <div id="yearwise"></div>
 
     </div>
       <div id= "container" class='container_cls'>
-        <div id= "map"> <div id= "tipDiv" "style= float:left;">  </div> </div>
+        <div id= "map" style="z-index:1"> <div id= "tipDiv" "style= float:left;">  </div> </div>
         <div  id="lineChart"></div>
       </div>
     <div id ="container1" class="container_cls">
-      <div id="barChart"></div>
+      <div id="barChart"> </div>
       <div id="barChart2"></div>
-
     </div>
     <div id= "parallelP">
-      <div id="parallelChart"></div>
+      <div style="float:right; padding-right:20px ">
+        <button class=".btn" onclick="location.href='#top'">TOP</button>
+      </div>
+      <div id="parallelChart" style="float:left;"></div>
+
     </div>
+    <div id="overlay"  onclick="off()" style= "z-index:9999">
+      <div id="text">Our project aims to trends in US VISA applications over the years with the help of interactive visualizations. It shows the visa application counts with respect to States, US Economic Sectors, VISA categories and it's status (Granted/Denied/Withdrawn). It also shows the snapshot of the applications data with interactive parallelplot visualation.</div>
+    </div>
+    <footer id="footer"></footer>
 
 
 

@@ -2,14 +2,22 @@ class BarChart{
 
     constructor() {
       this.svgWidth = 750;
-      this.svgHeight = 550;
+      this.svgHeight = 540;
       let barDiv = d3.select("#barChart")
 
-      this.margin = {top: 30, right: 20, bottom: 30, left: 100};
+      this.margin = {top: 45, right: 20, bottom: 30, left: 100};
       this.svg =barDiv.append("svg")
                           .attr("width",this.svgWidth)
                           .attr("height",this.svgHeight)
                           .attr("transform", "translate(0 ,0)")
+      this.svg.append("text")
+          .attr("x", (this.svgWidth / 2))
+          .attr("y", (15))
+          .attr("text-anchor", "middle")
+          .style("font-size", "16px")
+          .style("text-decoration", "underline")
+          .text("Application Counts (US Economic Sectors)");
+
       this.xAxis = this.svg.append('g')
               .attr('id', 'xAxisBar');
 
@@ -68,10 +76,10 @@ class BarChart{
 
       let barNames = ["Denied","Withdrawn", "Certified","Certified_Expired"]
       let chooseColor={
-        "Denied" : "#56ef89",
-        "Withdrawn": "#c10b0b",
-         "Certified":"#840ac1",
-        "Certified_Expired": "#1500ff"
+        "Denied" : "#c10b0b",
+        "Withdrawn": "#840ac1",
+         "Certified":"#56ef89",
+        "Certified_Expired": "#ffab44"
       }
 
 

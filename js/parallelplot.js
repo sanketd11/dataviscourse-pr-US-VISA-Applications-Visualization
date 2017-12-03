@@ -3,7 +3,7 @@ class ParallelChart {
 constructor(){
 
     this.svgWidth = 1500;
-    this.svgHeight = 700;
+    this.svgHeight = 600;
     let parallelDiv = d3.select("#parallelChart")
 
     this.margin = {top: 30, right: 20, bottom: 30, left: 100};
@@ -108,7 +108,7 @@ updateParallelPlot(yearData){
                           .style("fill",'black');})
                             .append("text")
                               .style("text-anchor", "middle")
-                              .attr("y", 9)
+                              .attr("y", 12)
                               .text(function(d,i) { console.log(d); return d; })
                               .style("stroke","black")
                               .style("font-size",15)
