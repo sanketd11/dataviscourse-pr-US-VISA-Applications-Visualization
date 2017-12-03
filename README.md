@@ -29,7 +29,7 @@ The link for ScreenCast:https://drive.google.com/open?id=1h2e0DlhEO2k4XbED2fXFwF
 
 The link for Process Book:https://github.com/sanketd11/dataviscourse-pr-US-VISA-Applications-Visualization/blob/master/_PROCESS%20BOOK%20FINAL.pdf
 
-Youtube link- <iframe width="560" height="315" src="https://www.youtube.com/embed/wgcuUP_ujBk" frameborder="0" allowfullscreen></iframe>
+Youtube link: https://www.youtube.com/embed/wgcuUP_ujBk"
 
 Project Overview Web Page- https://ash27023231.github.io/Exploring-US-Visa-Applications/
 
