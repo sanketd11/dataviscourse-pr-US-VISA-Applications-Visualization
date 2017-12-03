@@ -1,14 +1,14 @@
 class LineChart{
   constructor() {
     this.svgWidth = 600;
-    this.svgHeight = 500;
+    this.svgHeight = 550;
     let lineDiv = d3.select("#lineChart")
 
-    this.margin = {top: 10, right: 20, bottom: 30, left: 50};
+    this.margin = {top: 10, right: 20, bottom: 30, left: 50 };
     this.svg = lineDiv.append("svg")
                         .attr("width",this.svgWidth)
                         .attr("height",this.svgHeight)
-                        .attr("transform", "translate(0 ,0)")
+                        .attr("transform", "translate(0,0)")
 
     this.linesvg = this.svg.append('g')
                       .attr('id', "line1");
@@ -95,7 +95,7 @@ class LineChart{
                    .domain([2011, 2012, 2013, 2014,2015, 2016])
                    .range([this.margin.left, this.svgWidth-this.margin.right]);
     let yScale = d3.scaleLinear()
-                  .domain([0, 150000])
+                  .domain([0, 130000])
                   .range([this.svgHeight-this.margin.bottom,this.margin.bottom]);
 
     // 7. d3's line generator
@@ -169,7 +169,7 @@ class LineChart{
     dots.enter().append("circle")
         .merge(dots)
         .attr("class", "dot") // Assign a class for styling
-        .attr("cx", function(d, i) { return xScale(d.Year)+50 })
+        .attr("cx", function(d, i) { return xScale(d.Year)+45 })
         .attr("cy", function(d) { return yScale(d.Appcount) })
         .attr("r", 5);
    dots.exit().remove();
@@ -179,14 +179,14 @@ class LineChart{
    linesCertified.enter().append('line')
               .merge(linesCertified)
               .attr('x1', function(d,i){
-                  return xScale(d.Year)+50
+                  return xScale(d.Year)+45
               })
               .attr('y1', function(d){
                 return yScale(d.Certified)
               })
               .attr('x2',function(d,i){
                 if (i< dataset.length -1){
-                  return xScale(dataset[i+1].Year)+50
+                  return xScale(dataset[i+1].Year)+45
                 }
               })
               .attr('y2', function(d,i){
@@ -205,7 +205,7 @@ class LineChart{
     dotsCertified.enter().append("circle")
         .merge(dotsCertified)
         .attr("class", "dot") // Assign a class for styling
-        .attr("cx", function(d, i) { return xScale(d.Year)+50 })
+        .attr("cx", function(d, i) { return xScale(d.Year)+45 })
         .attr("cy", function(d) { return yScale(d.Certified) })
         .attr("r", 2);
    dotsCertified.exit().remove();
@@ -215,14 +215,14 @@ class LineChart{
    linesDenied.enter().append('line')
               .merge(linesDenied)
               .attr('x1', function(d,i){
-                  return xScale(d.Year)+50
+                  return xScale(d.Year)+45
               })
               .attr('y1', function(d){
                 return yScale(d.Denied)
               })
               .attr('x2',function(d,i){
                 if (i< dataset.length -1){
-                  return xScale(dataset[i+1].Year)+50
+                  return xScale(dataset[i+1].Year)+45
                 }
               })
               .attr('y2', function(d,i){
@@ -241,7 +241,7 @@ class LineChart{
     dotsDenied.enter().append("circle")
         .merge(dotsDenied)
         .attr("class", "dot") // Assign a class for styling
-        .attr("cx", function(d, i) { return xScale(d.Year)+50 })
+        .attr("cx", function(d, i) { return xScale(d.Year)+45 })
         .attr("cy", function(d) { return yScale(d.Denied) })
         .attr("r", 2);
    dotsDenied.exit().remove();
@@ -251,14 +251,14 @@ class LineChart{
    linesWithdrawn.enter().append('line')
               .merge(linesWithdrawn)
               .attr('x1', function(d,i){
-                  return xScale(d.Year)+50
+                  return xScale(d.Year)+45
               })
               .attr('y1', function(d){
                 return yScale(d.Withdrawn)
               })
               .attr('x2',function(d,i){
                 if (i< dataset.length -1){
-                  return xScale(dataset[i+1].Year)+50
+                  return xScale(dataset[i+1].Year)+45
                 }
               })
               .attr('y2', function(d,i){
@@ -277,7 +277,7 @@ class LineChart{
     dotsWithdrawn.enter().append("circle")
         .merge(dotsWithdrawn)
         .attr("class", "dot") // Assign a class for styling
-        .attr("cx", function(d, i) { return xScale(d.Year)+50 })
+        .attr("cx", function(d, i) { return xScale(d.Year)+45 })
         .attr("cy", function(d) { return yScale(d.Withdrawn) })
         .attr("r", 2);
    dotsWithdrawn.exit().remove();
@@ -288,14 +288,14 @@ class LineChart{
    linesCertified_Expired.enter().append('line')
               .merge(linesCertified_Expired)
               .attr('x1', function(d,i){
-                  return xScale(d.Year)+50
+                  return xScale(d.Year)+45
               })
               .attr('y1', function(d){
                 return yScale(d.Certified_Expired)
               })
               .attr('x2',function(d,i){
                 if (i< dataset.length -1){
-                  return xScale(dataset[i+1].Year)+50
+                  return xScale(dataset[i+1].Year)+45
                 }
               })
               .attr('y2', function(d,i){
@@ -314,7 +314,7 @@ class LineChart{
     dotsCertified_Expired.enter().append("circle")
         .merge(dotsCertified_Expired)
         .attr("class", "dot") // Assign a class for styling
-        .attr("cx", function(d, i) { return xScale(d.Year)+50 })
+        .attr("cx", function(d, i) { return xScale(d.Year)+45 })
         .attr("cy", function(d) { return yScale(d.Certified_Expired) })
         .attr("r", 2);
    dotsCertified_Expired.exit().remove();

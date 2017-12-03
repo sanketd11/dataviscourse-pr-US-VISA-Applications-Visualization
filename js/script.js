@@ -20,9 +20,13 @@ d3.json('data/us-states.json',function(error,data){
    let yearValues = ["2011","2012", "2013","2014","2015","2016"]
    let yearValuesAll = ["2011","2012", "2013","2014","2015","2016","All"]
 
+   let bigDict ={}
+   let bigDict1 ={}
 
 
-        		map.drawMap()
+
+
+   map.drawMap()
    callMap = function(i){
 
 
@@ -145,12 +149,16 @@ d3.json('data/us-states.json',function(error,data){
 								if(i === 6)
 								{
 								callAllBarChart(data_econ);
+
+                callAllBarChart2(data_visaType);
+
 								}
 								else
 								{
 								callMap(i)
 								callLine(i)
 								callBarChart(i)
+                callBarChart2(i)
 								callParallelPlot(i)
 								}
 								})
@@ -164,17 +172,33 @@ d3.json('data/us-states.json',function(error,data){
       console.log($(window).scrollTop())
 
       if (($(window).scrollTop() >=-10 && $(window).scrollTop()<900)){
+        d3.select('#container0').attr("style", "margin-top: 60px;")
         d3.select('#container').classed('navbar-fixed-top',true)
         d3.select('#container1').classed('navbar-fixed-top', false)
         d3.select('#container1').classed('show',false)
         d3.select('#container1').classed('hide',true)
+        d3.select('#parallelP').classed('show',false)
+        d3.select('#parallelP').classed('hide',true)
 
-      }else{
+
+      }else if((($(window).scrollTop() >=900 && $(window).scrollTop()<1200))){
+        d3.select('.navbar').classed('hide',false)
+        d3.select('#container0').attr("style", "margin-top: 60px;")
+
         d3.select('#container').classed('navbar-fixed-top',false)
-        // d3.select('#container1').classed('navbar-fixed-top', true)
+        d3.select('#container1').classed('navbar-fixed-top', true)
         d3.select('#container1').classed('hide',false)
         d3.select('#container1').classed('show',true)
-
+        d3.select('#parallelP').classed('show',false)
+        d3.select('#parallelP').classed('hide',true)
+      }else{
+        d3.select('.navbar').classed('hide',true)
+        d3.select('#container1').classed('show',false)
+        d3.select('#container1').classed('hide',true)
+        d3.select('#container0').attr("style", "margin-top: 10px;")
+        d3.select('#parallelP').classed('hide',false)
+        d3.select('#parallelP').classed('show',true)
+        d3.select('#parallelP').classed('navbar-fixed-top', true)
       }
       if ($(window).scrollTop() >=-10 && $(window).scrollTop()<150){
 		callYearWise("2011");
@@ -202,40 +226,89 @@ d3.json('data/us-states.json',function(error,data){
         callLine(5);
       }else{
 		callYearWise("All");
+
         if (flag == true){
           console.log('data --->',allyearEconomicSectorData)
+
           if (data_econ.length == 0){
+
             for (let key1=0 ; key1<allyearEconomicSectorData.length; key1++) {
-              console.log("Key--->",key1)
-              let counter =0
-              for (let key2=0; key2 < allyearEconomicSectorData[key1].value.length; key2++){
-                let temp = allyearEconomicSectorData[key1].value[key2]
-                if (!data_econ.hasOwnProperty(counter)) {
-                    data_econ[counter] = { key:temp.key, value:[{key:allyearEconomicSectorData[key1].key, value: temp.value}]}
-                }else{
-                    data_econ[counter].value.push({key:allyearEconomicSectorData[key1].key, value : temp.value})
+                temp = allyearEconomicSectorData[key1]
+                for (let key2=0; key2 < temp.value.length; key2++){
+                  let temp2 = temp.value[key2]
+                  if (!bigDict.hasOwnProperty(temp2.key)){
+                    bigDict[temp2.key]={}
+                    bigDict[temp2.key][temp.key] = temp2.value
+                  }else{
+                    bigDict[temp2.key][temp.key] = temp2.value
+                  }
                 }
-                counter+=1
+              }
+              let ctr = 0
+              for (let key1 in bigDict) {
+                if (bigDict.hasOwnProperty(key1)) {
+                  data_econ.push({key:key1,value:[]})
+                  for (let key2 in bigDict[key1]){
+                    data_econ[ctr].value.push({key: key2, value:bigDict[key1][key2]})
+                  }
+                }
+                ctr+=1
               }
             }
             if (data_visaType.length == 0){
-              let counter2 =0
               for (let key1=0 ; key1<allyearVisaTypeCounts.length; key1++) {
-                console.log("Key--->",key1)
-                let counter =0
-
-                for (let key2=0; key2 < allyearVisaTypeCounts[key1].value.length; key2++){
-                  let temp = allyearVisaTypeCounts[key1].value[key2]
-                  if (counter2 == 0) {
-                      data_visaType[counter] = {key:temp.key, value:[{key:allyearVisaTypeCounts[key1].key, value: temp.value}]}
-                  }else{
-                      data_visaType[counter].value.push({key:allyearVisaTypeCounts[key1].key, value : temp.value})
+                  temp = allyearVisaTypeCounts[key1]
+                  for (let key2=0; key2 < temp.value.length; key2++){
+                    let temp2 = temp.value[key2]
+                    if (!bigDict1.hasOwnProperty(temp2.key)){
+                      bigDict1[temp2.key]={}
+                      bigDict1[temp2.key][temp.key] = temp2.value
+                    }else{
+                      bigDict1[temp2.key][temp.key] = temp2.value
+                    }
                   }
-                  counter+=1
                 }
-                counter2+=1
-              }
-          }
+                let ctr = 0
+                let flagVisaType = false
+                for (let key1 in bigDict1) {
+                  if (bigDict1.hasOwnProperty(key1)) {
+                    if (key1 == "H1B" || key1 == "H-1B" ){
+                      if (flagVisaType == false){
+                        data_visaType.push({key:"H-1B",value:[]})
+                        flagVisaType = true
+                      }
+
+                    }else{
+                      data_visaType.push({key:key1,value:[]})
+                    }
+                    for (let key2 in bigDict1[key1]){
+                      if (key1 == "H1B" || key1 == "H-1B" ){
+                        for (let m = 0; m<data_visaType.length; m++){
+                          if (data_visaType[m].key == "H-1B"){
+                            data_visaType[m].value.push({key: key2, value:bigDict1[key1][key2]})
+                            break
+                          }
+                        }
+                      }else{
+                        data_visaType[ctr].value.push({key: key2, value:bigDict1[key1][key2]})
+                      }
+                    }
+                  }
+                  ctr+=1
+                }
+
+            for (let n=0 ; n<6; n++){
+              let data_visaType_ = data_visaType[n]
+              let val2 = data_visaType_.value.sort(function(a,b){
+                if (parseInt(b.key)>parseInt(a.key)){
+                  return -1;
+                }else{
+                  return 1;
+                }
+              })
+              data_visaType[n].value = val2;
+            }
+
         }
           console.log("data_econ:--->",data_econ)
           callAllBarChart(data_econ);
@@ -244,8 +317,8 @@ d3.json('data/us-states.json',function(error,data){
           callParallelPlot(0)
           flag = false
         }
-
       }
+
     });
 
 })
