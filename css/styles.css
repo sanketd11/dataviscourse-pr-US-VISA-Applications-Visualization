@@ -41,13 +41,15 @@ body {
  float: left;
  border-style: solid;
  border-width: 1.5px;
-padding: 10px;
+
 }
 #barChart{
   float: left;
   border-style: solid;
   border-width: 1.5px;
- padding: 10px;
+ padding-top: 10px;
+ padding-left: 10px;
+ padding-right: 10px;
 
 }
 #container0{
@@ -58,7 +60,9 @@ padding: 10px;
   float: right;
   border-style: solid;
   border-width: 1.5px;
-  padding: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 #container{
   margin-top: 150px;
@@ -72,10 +76,23 @@ padding: 10px;
 }
 #parallelP {
   margin-top:50px;
-  margin-left: 60px;
+  margin-left: 20px;
 }
 #container0{
 
+}
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 50%; /* Full width (cover the whole page) */
+    height: 50%; /* Full height (cover the whole page) */
+    top: 25%;
+    left: 25;
+    right: 25%;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
 }
 #container1{
   margin-top:150px;
@@ -95,13 +112,13 @@ padding: 10px;
     stroke: #404040;
     stroke-width:4;
 	 r:18px;
-	 
+
 }
 
 .selected{
     stroke: #404040;
     stroke-width:4;
-   
+
 }
 .yearChart{
     stroke: #FFF;
@@ -144,4 +161,26 @@ padding: 10px;
   fill-opacity: .3;
   stroke: #fff;
   shape-rendering: crispEdges;
+}
+
+path{
+fill : none;
+stroke-width: 1px;
+stroke:#222;
+
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+#text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
 }
