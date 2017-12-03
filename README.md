@@ -23,13 +23,9 @@ There's one Feedback exercise Pdf which explains what we learnt from the feedbac
 
 The link for Project Website :https://sanketd11.github.io/dataviscourse-pr-US-VISA-Applications-Visualization
 
+The link for Process Book:https://github.com/sanketd11/dataviscourse-pr-US-VISA-Applications-Visualization/blob/master/PROJECT%20PROCESS%20BOOK%20.pdf
 
-The link for ScreenCast:https://drive.google.com/open?id=1h2e0DlhEO2k4XbED2fXFwFDNtSV0ULAk
-
-
-The link for Process Book:https://github.com/sanketd11/dataviscourse-pr-US-VISA-Applications-Visualization/blob/master/_PROCESS%20BOOK%20FINAL.pdf
-
-Youtube link: https://www.youtube.com/embed/wgcuUP_ujBk"
+Youtube/Screencast link: https://www.youtube.com/embed/wgcuUP_ujBk"
 
 Project Overview Web Page- https://ash27023231.github.io/Exploring-US-Visa-Applications/
 
