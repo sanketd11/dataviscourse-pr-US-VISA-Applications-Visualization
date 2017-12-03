@@ -19,23 +19,23 @@ d3.json('data/us-states.json',function(error,data){
    let flag = true
    let yearValues = ["2011","2012", "2013","2014","2015","2016"]
    let yearValuesAll = ["2011","2012", "2013","2014","2015","2016","All"]
-  
-   
 
-        		map.drawMap()     
+
+
+        		map.drawMap()
    callMap = function(i){
 
-	   
-	   
+
+
        map.updateMap(allyearstateWiseCaseCounts[i].value, parseInt(allyearstateWiseCaseCounts[i].key),
 	   allyearstateAppCounts[i].value, parseInt(allyearstateAppCounts[i].key),
 	   allyearstateMeanSalary[i].value, parseInt(allyearstateMeanSalary[i].key))
    }
-     
-	  
- 
+
+
+
    callLine = function(i){
-	  
+
        lineChart.updateLine(allyearCaseCounts[i].value,parseInt(allyearCaseCounts[i].key))
    }
    callBarChart= function(i){
@@ -50,8 +50,8 @@ d3.json('data/us-states.json',function(error,data){
    callAllBarChart2= function(data_visaType){
       barChart2.updateAllBar(data_visaType)
    }
-   callParallelPlot = function(yearData){
-      parallelChart.updateParallelPlot(yearData)
+   callParallelPlot = function(i){
+      parallelChart.updateParallelPlot(allyearParallelPlot[i].value)
   }
 
   dataInput = function(year){
@@ -66,12 +66,12 @@ d3.json('data/us-states.json',function(error,data){
                                .key(function(d){ return d.Employer_State;})
                                .rollup(function(v){ return v.length})
                                .entries(yearData);
-							   
+
 		let stateMeanSalary = d3.nest()
                                 .key(function(d){ return d.Employer_State;})
                                 .rollup(function(v){ return d3.mean(v, function(d) {return d.Wage_Offer})})
-                                .entries(yearData);				   
-	 
+                                .entries(yearData);
+
 		let economicSectorCaseCounts = d3.nest()
                               .key(function(d){ return d.US_Economic_Sector;})
                               .key(function(d){ return d.Case_Status})
@@ -99,7 +99,7 @@ d3.json('data/us-states.json',function(error,data){
                               .entries(yearData);
 
 
-      let parallelPlotData = getRandom(yearData, 1500)
+      let parallelPlotData = getRandom(yearData, 500)
 
 
       allyearEconomicSectorData.push({key:year, value:economicSectorCounts});
@@ -112,7 +112,7 @@ d3.json('data/us-states.json',function(error,data){
 
       allyearstateWiseCaseCounts.push({key:year, value:stateWiseCaseCounts});
       allyearstateAppCounts.push({key:year, value:stateAppCounts});
-      allyearstateMeanSalary.push({key:year, value:stateMeanSalary});  
+      allyearstateMeanSalary.push({key:year, value:stateMeanSalary});
      })
   }
   function getRandom(arr, n) {
@@ -135,7 +135,7 @@ d3.json('data/us-states.json',function(error,data){
 		 yearWise.update(year)
 		}
 		 callYearWise('2011');
-		 
+
 		 let yrChartSelection = d3.select('#yearwise').selectAll('circle').data(yearValuesAll)
 							  .on('click', function(d,i){
 								d3.selectAll('.highlighted')
@@ -144,7 +144,7 @@ d3.json('data/us-states.json',function(error,data){
 								.classed('highlighted',true)
 								if(i === 6)
 								{
-								callAllBarChart(data_econ);	
+								callAllBarChart(data_econ);
 								}
 								else
 								{
@@ -155,8 +155,8 @@ d3.json('data/us-states.json',function(error,data){
 								}
 								})
 							   .style("fill", 'green');
-							   
-							   
+
+
    // Provision for scrolly telling
     $(window).scroll(function(){
       // console.log('SCROLL BODY', $(window).height());
@@ -177,20 +177,20 @@ d3.json('data/us-states.json',function(error,data){
 
       }
       if ($(window).scrollTop() >=-10 && $(window).scrollTop()<150){
-		callYearWise("2011");  
+		callYearWise("2011");
         callLine(0);
 		console.log("b1")
 
       }else if(($(window).scrollTop() >=150 && $(window).scrollTop()<300)){
-		callYearWise("2012");  
+		callYearWise("2012");
         callLine(1);
       }
       else if(($(window).scrollTop() >=300 && $(window).scrollTop()<450)){
-		callYearWise("2013");  
+		callYearWise("2013");
         callLine(2);
       }
       else if(($(window).scrollTop() >=450 && $(window).scrollTop()<600)){
-		callYearWise("2014");  
+		callYearWise("2014");
         callLine(3);
       }
       else if(($(window).scrollTop() >=600 && $(window).scrollTop()<750)){
@@ -241,7 +241,7 @@ d3.json('data/us-states.json',function(error,data){
           callAllBarChart(data_econ);
           callAllBarChart2(data_visaType)
           console.log("Data Vis Type: --->", data_visaType)
-          callParallelPlot(allyearParallelPlot[0].value)
+          callParallelPlot(0)
           flag = false
         }
 
