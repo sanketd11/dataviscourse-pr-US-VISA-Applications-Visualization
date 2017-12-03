@@ -5,17 +5,34 @@ class YearChart {
         //Creating Map Object instance
 
         // Initializes the svg elements required for this chart
-        this.margin = {top: 10, right: 20, bottom: 30, left: 20};
-        let yearcircles = d3.select("#yearwise")
+		
+	    this.margin = {top: 10, right: 20, bottom: 30, left: 20};
+	    let divmap = d3.select("#yearwise").classed("content", true);
 
-        this.svgWidth = 700
-        this.svgHeight = 100
+	    //fetch the svg bounds
+	    this.svgBounds = divmap.node().getBoundingClientRect();
+	    this.svgWidth = this.svgBounds.width - this.margin.left - this.margin.right;
+		this.svgHeight = 100
+		 
+		 //add the svg to the div
+	    this.svg = divmap.append("svg")
+	        .attr("width",this.svgWidth)
+	        .attr("height",this.svgHeight)
+			.attr("transform", "translate(0 ,0)")
+			
+			
+			
+ 
+     //   let yearcircles = d3.select("#yearwise")
+
+        //this.svgWidth = 700
+       // this.svgHeight = 100
 
         //add the svg to the div
-        this.svg = yearcircles.append("svg")
-            .attr("width", this.svgWidth)
-            .attr("height", this.svgHeight)
-            .attr("transform", "translate(0 ,0)")
+      //  this.svg = yearcircles.append("svg")
+      //      .attr("width", this.svgWidth)
+       //     .attr("height", this.svgHeight)
+         //   .attr("transform", "translate(0 ,0)")
     };
 
 

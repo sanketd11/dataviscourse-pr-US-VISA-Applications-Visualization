@@ -1,15 +1,38 @@
 class LineChart{
   constructor() {
-    this.svgWidth = 600;
-    this.svgHeight = 550;
-    let lineDiv = d3.select("#lineChart")
+	  
+	      this.margin = {top: 10, right: 20, bottom: 30, left: 60 };
+	    let lineDiv = d3.select("#lineChart").classed("content", true);
 
-    this.margin = {top: 10, right: 20, bottom: 30, left: 50 };
-    this.svg = lineDiv.append("svg")
-                        .attr("width",this.svgWidth)
-                        .attr("height",this.svgHeight)
-                        .attr("transform", "translate(0,0)")
+	    //fetch the svg bounds
+	    this.svgBounds = lineDiv.node().getBoundingClientRect();
+	    this.svgWidth = this.svgBounds.width - this.margin.left - this.margin.right;
+		this.svgHeight = 535
+		 
+		 //add the svg to the div
+	    this.svg = lineDiv.append("svg")
+	        .attr("width",this.svgWidth)
+	        .attr("height",this.svgHeight)
+			.attr("transform", "translate(0,0)")
 
+			
+    //this.svgWidth = 650;
+   // this.svgHeight = 535;
+    //let lineDiv = d3.select("#lineChart")
+
+   //this.margin = {top: 10, right: 20, bottom: 30, left: 50 };
+   // this.svg = lineDiv.append("svg")
+      //                  .attr("width",this.svgWidth)
+        //                .attr("height",this.svgHeight)
+          //              .attr("transform", "translate(0,0)")
+
+    this.svg.append("text")
+        .attr("x", (this.svgWidth / 2))
+        .attr("y",(15))
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("text-decoration", "underline")
+        .text("Yearwise Application Counts (with Case Status)");
     this.linesvg = this.svg.append('g')
                       .attr('id', "line1");
     //Certified
@@ -100,7 +123,7 @@ class LineChart{
 
     // 7. d3's line generator
     let line = d3.line()
-      .x(function(d) { return xScale(d.Year)+50; }) // set the x values for the line generator
+      .x(function(d) { return xScale(d.Year)+45; }) // set the x values for the line generator
       .y(function(d) { return yScale(d.Appcount); }) // set the y values for the line generator
       .curve(d3.curveMonotoneX) // apply smoothing to the line
 
@@ -143,14 +166,14 @@ class LineChart{
    lines.enter().append('line')
               .merge(lines)
               .attr('x1', function(d,i){
-                  return xScale(d.Year)+50
+                  return xScale(d.Year)+45
               })
               .attr('y1', function(d){
                 return yScale(d.Appcount)
               })
               .attr('x2',function(d,i){
                 if (i< dataset.length -1){
-                  return xScale(dataset[i+1].Year)+50
+                  return xScale(dataset[i+1].Year)+45
                 }
               })
               .attr('y2', function(d,i){

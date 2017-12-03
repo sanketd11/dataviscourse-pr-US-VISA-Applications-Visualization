@@ -20,7 +20,7 @@ d3.json('data/us-states.json',function(error,data){
    let yearValues = ["2011","2012", "2013","2014","2015","2016"]
    let yearValuesAll = ["2011","2012", "2013","2014","2015","2016","All"]
 
-  
+
      d3.csv('data/processed_data/2011_Application_Count.csv', function(error,stateData){
 	   map.drawMap(stateData)
    })
@@ -131,12 +131,12 @@ d3.json('data/us-states.json',function(error,data){
       return result;
   }
   yearValues.forEach(dataInput);
-     
+
 
 
 		callYearWise = function(year){
 		 yearWise.update(year)
-		
+
 		}
 		 callYearWise('2011');
 
@@ -153,8 +153,9 @@ d3.json('data/us-states.json',function(error,data){
                 callAllBarChart2(data_visaType);
 
 								}
-								else
-								{									 
+								else		 
+								{
+
 								callMap(i)
 								callLine(i)
 								callBarChart(i)
@@ -172,6 +173,8 @@ d3.json('data/us-states.json',function(error,data){
       console.log($(window).scrollTop())
 
       if (($(window).scrollTop() >=-10 && $(window).scrollTop()<900)){
+          d3.select('.navbar').classed('show',true)
+            d3.select('.navbar').classed('hide',false)
         d3.select('#container0').attr("style", "margin-top: 60px;")
         d3.select('#container').classed('navbar-fixed-top',true)
         d3.select('#container1').classed('navbar-fixed-top', false)
@@ -192,7 +195,9 @@ d3.json('data/us-states.json',function(error,data){
         d3.select('#parallelP').classed('show',false)
         d3.select('#parallelP').classed('hide',true)
       }else{
+          d3.select('.navbar').classed('show',false)
         d3.select('.navbar').classed('hide',true)
+        d3.select('#container').classed('navbar-fixed-top',false)
         d3.select('#container1').classed('show',false)
         d3.select('#container1').classed('hide',true)
         d3.select('#container0').attr("style", "margin-top: 10px;")
@@ -208,27 +213,37 @@ d3.json('data/us-states.json',function(error,data){
       }else if(($(window).scrollTop() >=150 && $(window).scrollTop()<300)){
 		callYearWise("2012");
         callLine(1);
+
 		callMap(1);
+
       }
       else if(($(window).scrollTop() >=300 && $(window).scrollTop()<450)){
 		callYearWise("2013");
         callLine(2);
+
 		callMap(2);
+
       }
       else if(($(window).scrollTop() >=450 && $(window).scrollTop()<600)){
 		callYearWise("2014");
         callLine(3);
+
 		callMap(3);
+
       }
       else if(($(window).scrollTop() >=600 && $(window).scrollTop()<750)){
 		callYearWise("2015");
         callLine(4);
+
 		callMap(4);
+
       }
       else if(($(window).scrollTop() >=750 && $(window).scrollTop()<900)){
 		callYearWise("2016");
         callLine(5);
+
 		callMap(5);
+
       }else{
 		callYearWise("All");
 
