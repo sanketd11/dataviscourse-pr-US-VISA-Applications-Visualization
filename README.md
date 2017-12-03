@@ -20,6 +20,7 @@ There's one Feedback exercise Pdf which explains what we learnt from the feedbac
 
 ---***NOTE :- WE HAVE IMPLEMENTED SCROLLYTELLING BY MANIPULATING LOCATION OF SCROLL BAR IN THE BROWSER WINDOW. PLEASE ADJUST THE BROWSER WINDOW ACCORDINGLY. PLEASE SCROLL A LITTLE INITIALLY.
 
+Project Overview Web Page- https://ash27023231.github.io/Exploring-US-Visa-Applications/
 
 The link for Project Website :https://sanketd11.github.io/dataviscourse-pr-US-VISA-Applications-Visualization
 
@@ -27,6 +28,5 @@ The link for Process Book:https://github.com/sanketd11/dataviscourse-pr-US-VISA-
 
 Youtube/Screencast link: https://www.youtube.com/embed/wgcuUP_ujBk"
 
-Project Overview Web Page- https://ash27023231.github.io/Exploring-US-Visa-Applications/
 
 So, we have included all the things which were being asked to do so.
