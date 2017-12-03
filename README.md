@@ -18,7 +18,7 @@ Theres one pdf namely as Process Book which conveys whatever we are doing in the
 
 There's one Feedback exercise Pdf which explains what we learnt from the feedback which we got from the other team and most importantly TA as well.
 
----***NOTE :- WE HAVE IMPLEMENTED SCROLLYTELLING BY MANIPULATING LOCATION OF SCROLL BAR IN THE BROWSER WINDOW. PLEASE ADJUST THE BROWSER WINDOW ACCORDINGLY. PLEASE SCROLL A LITTLE INITIALLY.
+---***NOTE :- WE HAVE IMPLEMENTED SCROLLYTELLING BY MANIPULATING LOCATION OF SCROLL BAR IN THE BROWSER WINDOW. PLEASE ADJUST THE BROWSER WINDOW ACCORDINGLY. PLEASE SCROLL THROUGH ALL THE YEARS TO LOAD THE COMPLETE DATA FIRST.
 
 Project Overview Web Page- https://ash27023231.github.io/Exploring-US-Visa-Applications/
 
