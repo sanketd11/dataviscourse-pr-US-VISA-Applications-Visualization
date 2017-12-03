@@ -20,24 +20,21 @@ d3.json('data/us-states.json',function(error,data){
    let yearValues = ["2011","2012", "2013","2014","2015","2016"]
    let yearValuesAll = ["2011","2012", "2013","2014","2015","2016","All"]
 
+  
+     d3.csv('data/processed_data/2011_Application_Count.csv', function(error,stateData){
+	   map.drawMap(stateData)
+   })
+
+
    let bigDict ={}
    let bigDict1 ={}
 
 
-
-
-   map.drawMap()
    callMap = function(i){
-
-
-
-       map.updateMap(allyearstateWiseCaseCounts[i].value, parseInt(allyearstateWiseCaseCounts[i].key),
-	   allyearstateAppCounts[i].value, parseInt(allyearstateAppCounts[i].key),
-	   allyearstateMeanSalary[i].value, parseInt(allyearstateMeanSalary[i].key))
+       map.updateMap(allyearstateAppCounts[i].value, allyearstateMeanSalary[i].value)
    }
 
-
-
+   
    callLine = function(i){
 
        lineChart.updateLine(allyearCaseCounts[i].value,parseInt(allyearCaseCounts[i].key))
@@ -133,10 +130,12 @@ d3.json('data/us-states.json',function(error,data){
       return result;
   }
   yearValues.forEach(dataInput);
+     
 
 
 		callYearWise = function(year){
 		 yearWise.update(year)
+		
 		}
 		 callYearWise('2011');
 
@@ -155,6 +154,7 @@ d3.json('data/us-states.json',function(error,data){
 								}
 								else
 								{
+									 
 								callMap(i)
 								callLine(i)
 								callBarChart(i)
