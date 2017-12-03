@@ -39,7 +39,6 @@ body {
 
 #map {
  float: left;
- margin: auto;
  border-style: solid;
  border-width: 1.5px;
 padding: 10px;
@@ -51,6 +50,9 @@ padding: 10px;
  padding: 10px;
 
 }
+#container0{
+  margin-top: 60px;
+}
 
 #barChart2 {
   float: right;
@@ -60,9 +62,20 @@ padding: 10px;
 }
 #container{
   margin-top: 150px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.container_cls{
+  margin-top: 150px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+#parallelP {
+  margin-top:50px;
+  margin-left: 60px;
 }
 #container0{
-  margin-top: 60px;
+
 }
 #container1{
   margin-top:150px;
@@ -76,7 +89,6 @@ padding: 10px;
 }
 #yearwise{
   position: absolute;
-  margin: auto;
   right: 25%;
 }
 .highlighted {
@@ -100,7 +112,7 @@ padding: 10px;
 
 .d3-tip {
     /*line-height: 5;*/
-   
+
     min-width: 610px;
     border-style: groove;
     /*padding: 12px;*/
@@ -109,7 +121,7 @@ padding: 10px;
 
     pointer-events: none;
 }
-	
+
 .background path {
   fill: none;
   stroke: #ddd;
