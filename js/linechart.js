@@ -32,7 +32,7 @@ class LineChart{
         .attr("text-anchor", "middle")
         .style("font-size", "16px")
         .style("text-decoration", "underline")
-        .text("Yearwise Application Counts (with Case Status)");
+        .text("Yearwise Application Counts");
     this.linesvg = this.svg.append('g')
                       .attr('id', "line1");
     //Certified
